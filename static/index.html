@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking Agent</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Booking Agent</h1>
+        <div id="system-status" class="status-bar"></div>
+    </header>
+    <main>
+        <section class="card" id="new-reservation">
+            <h2>New Reservation</h2>
+            <form id="reservation-form">
+                <div class="form-row">
+                    <label>Restaurant
+                        <div class="autocomplete-wrapper">
+                            <input type="text" name="restaurant_name" id="restaurant-input" required placeholder="Start typing to search Resy..." autocomplete="off">
+                            <div id="autocomplete-results" class="autocomplete-results hidden"></div>
+                        </div>
+                        <input type="hidden" name="venue_id" id="venue-id">
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>Date
+                        <input type="date" name="date" required>
+                    </label>
+                    <label>Time
+                        <input type="time" name="time" required value="19:00">
+                    </label>
+                    <label>Party Size
+                        <input type="number" name="party_size" min="1" max="20" value="2">
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>Contact Email (optional)
+                        <input type="email" name="contact_email" placeholder="you@email.com">
+                    </label>
+                    <label>Booking Opens At (optional)
+                        <input type="datetime-local" name="booking_open_time" placeholder="When inventory opens">
+                    </label>
+                </div>
+                <button type="submit">Search &amp; Book</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Reservations</h2>
+            <div class="filter-row">
+                <button class="filter-btn active" data-status="">All</button>
+                <button class="filter-btn" data-status="pending">Pending</button>
+                <button class="filter-btn" data-status="searching">Searching</button>
+                <button class="filter-btn" data-status="waiting">Waiting</button>
+                <button class="filter-btn" data-status="polling">Polling</button>
+                <button class="filter-btn" data-status="booked">Booked</button>
+                <button class="filter-btn" data-status="failed">Failed</button>
+            </div>
+            <div id="reservations-list"></div>
+        </section>
+
+        <section class="card">
+            <h2>Activity Log</h2>
+            <div id="activity-log"></div>
+        </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

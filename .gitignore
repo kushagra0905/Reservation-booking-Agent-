@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.env
+*.db
+*.sqlite
+.venv/
+venv/
+browser_state/
+screenshots/
+*.log
