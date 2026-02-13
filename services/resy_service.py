@@ -14,7 +14,8 @@ HEADERS = {
     "authorization": f'ResyAPI api_key="{settings.resy_api_key}"',
     "x-resy-auth-token": settings.resy_auth_token,
     "x-resy-universal-auth": settings.resy_auth_token,
-    "origin": "https://resy.com",
+    "origin": "https://widgets.resy.com",
+    "referer": "https://widgets.resy.com/",
     "accept": "application/json",
     "content-type": "application/x-www-form-urlencoded",
 }
@@ -25,7 +26,8 @@ def _make_headers() -> dict:
         "authorization": f'ResyAPI api_key="{settings.resy_api_key}"',
         "x-resy-auth-token": settings.resy_auth_token,
         "x-resy-universal-auth": settings.resy_auth_token,
-        "origin": "https://resy.com",
+        "origin": "https://widgets.resy.com",
+        "referer": "https://widgets.resy.com/",
         "accept": "application/json",
         "content-type": "application/x-www-form-urlencoded",
     }
@@ -82,8 +84,8 @@ async def find_available_slots(
     Returns list of slot dicts with keys: config_id, token, time, type.
     """
     params = {
-        "lat": "0",
-        "long": "0",
+        "lat": "40.7128",
+        "long": "-74.0060",
         "day": date,
         "party_size": str(party_size),
         "venue_id": venue_id,

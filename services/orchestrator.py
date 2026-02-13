@@ -96,7 +96,7 @@ async def _snipe_reservation(request_id: int):
         if not request or request.status == "cancelled":
             return
 
-        wait_seconds = (request.booking_open_time - datetime.utcnow()).total_seconds()
+        wait_seconds = (request.booking_open_time - datetime.now()).total_seconds()
         max_poll_duration = request.max_poll_duration_secs
 
         if wait_seconds > 0:
